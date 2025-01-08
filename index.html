@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <title>To do list</title>
+    <style>
+         @media(max-width:500px) {
+        body{
+            flex-direction: column;
+        }
+    }
+        body{
+            display: flex;
+            justify-content: center;
+            margin-top:100px;
+        }
+        .container{
+            background-color:grey;
+            font-size: 30px;
+            position:absolute;
+            border-radius: 10px;
+
+        }
+        button{
+            font-size: 30px;
+            border-radius: 10px;
+        }
+        li{
+            display: flex;
+            justify-content: space-between;
+        }
+        #itemInput{
+            font-size:30px;
+            border-radius: 10px;
+        }
+        #itemlist{
+        margin: 10px;
+        padding: 10px;
+        font-size:30px;
+        border: 1px solid black;
+        border-radius: 10px;
+        height: auto;
+        width: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2 style="text-align: center;">To-Do List</h2>
+        <input type="text" id="itemInput" placeholder="Type something...">
+        <button onclick="add()">Add to Wishlist</button>
+        <div id="itemlist"></div>
+               
+        </div>
+    </div>
+    <script>
+        let Input = document.getElementById("itemInput");
+        let text = document.querySelector("#itemlist");
+        function add() {
+            if (Input.value == "") {
+                alert("enter the task");
+            }
+            else {
+                let newElement = document.createElement("li");
+                newElement.innerHTML = `${Input.value}<i class="fa-solid fa-trash"></i>`
+                text.append(newElement);
+                Input.value = "";
+
+                newElement.querySelector("i").addEventListener("click", remove);
+                function remove() {
+                    newElement.remove();
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
